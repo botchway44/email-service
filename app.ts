@@ -16,7 +16,7 @@ let mailService: MailerService;
 
 
 server.get('/api/mail', async (req: any, res: any) => {
-  mailService.sendConfirmationEmail("noelnuel44@gmail.com", { code: "1234" });
+  mailService.sendConfirmationEmail("noelnuel44@gmail.com");
 
   return res.status(200).send("Email Sent");
 });

@@ -31,7 +31,7 @@ export class MailerService {
     this.mailTransporter.use("compile", hbs(options));
   }
 
-  sendConfirmationEmail(email: string, mailData: { code: string }) {
+  sendConfirmationEmail(email: string) {
 
 
     const mailOptions = {
@@ -39,7 +39,7 @@ export class MailerService {
       to: `${email}`,
       subject: `Hey, here's your PIN`,
       template: "test",
-      context: mailData,
+      context: {},
     };
 
     this.mailTransporter.sendMail(mailOptions, (error: any, info: any) => {
