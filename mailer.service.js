@@ -3,10 +3,9 @@ const nodemailer = require('nodemailer');
 const hbs = require("nodemailer-express-handlebars");
 require("dotenv").config();
 
-export class MailerService {
+module.exports =  class MailerService {
 
-
-  mailTransporter: any;
+  mailTransporter;
 
   constructor() {
     this.mailTransporter = nodemailer.createTransport({
@@ -31,7 +30,7 @@ export class MailerService {
     this.mailTransporter.use("compile", hbs(options));
   }
 
-  sendConfirmationEmail(email: string) {
+  sendConfirmationEmail(email) {
 
 
     const mailOptions = {
@@ -42,7 +41,7 @@ export class MailerService {
       context: {},
     };
 
-    this.mailTransporter.sendMail(mailOptions, (error: any, info: any) => {
+    this.mailTransporter.sendMail(mailOptions, (error, info) => {
       console.log("Sending Emails:::");
       if (error) {
         return console.log(error);

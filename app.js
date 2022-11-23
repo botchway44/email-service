@@ -1,5 +1,5 @@
 require("dotenv").config();
-import { MailerService } from './mailer.service';
+const MailerService  = require('./mailer.service');
 
 const express = require('express');
 const server = express();
@@ -12,10 +12,10 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(express.static(path.join(__dirname, "../../.")));
 
 
-let mailService: MailerService;
+let mailService;
 
 
-server.get('/api/mail', async (req: any, res: any) => {
+server.get('/api/mail', async (req, res) => {
   mailService.sendConfirmationEmail("noelnuel44@gmail.com");
 
   return res.status(200).send("Email Sent");
